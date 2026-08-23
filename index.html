@@ -1444,34 +1444,39 @@ rel="noopener">
 
   // ---------- Search filter ----------
   const searchInput = document.getElementById('searchInput');
-  const noResults = document.getElementById('noResults');
 
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
-    let anyVisible = false;
 
-    sections.forEach(section => {
-      let sectionHas = false;
+    // Attendre au moins 2 caractères
+    if (q.length < 2) return;
 
-      section.querySelectorAll('.card').forEach(card => {
+    let matchingSection = null;
+
+    sections.some(section => {
+
+      const cards = Array.from(section.querySelectorAll('.card'));
+
+      const productFound = cards.some(card => {
         const name = (card.dataset.name || '').toLowerCase();
-        const match = !q || name.includes(q);
-
-        card.style.display = match ? '' : 'none';
-
-        if (match) {
-          sectionHas = true;
-        }
+        return name.includes(q);
       });
 
-      section.style.display = sectionHas ? '' : 'none';
-
-      if (sectionHas) {
-        anyVisible = true;
+      if (productFound) {
+        matchingSection = section;
+        return true;
       }
+
+      return false;
     });
 
-    noResults.classList.toggle('show', !anyVisible);
+    // Aller vers la catégorie correspondante
+    if (matchingSection) {
+      matchingSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   });
 </script>
 </body>
