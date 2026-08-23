@@ -602,6 +602,218 @@
   }
 
   :focus-visible{outline:2px solid var(--teal-500); outline-offset:2px;}
+
+  /* ---------- Optimisation mobile ---------- */
+@media (max-width: 680px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* Barre du haut */
+  .topbar-inner{
+    padding:8px 10px;
+    gap:7px;
+  }
+
+  .brand{
+    flex-shrink:0;
+  }
+
+  .brand-text{
+    display:none;
+  }
+
+  .brand svg{
+    width:26px;
+    height:26px;
+  }
+
+  .products-toggle{
+    padding:8px 10px;
+    font-size:0.76rem;
+  }
+
+  .products-toggle svg{
+    width:12px;
+    height:12px;
+  }
+
+  .actions{
+    min-width:0;
+    gap:6px;
+  }
+
+  /* Recherche */
+  .search{
+    flex:1;
+    min-width:0;
+  }
+
+  .search input{
+    width:100%;
+    min-width:0;
+    height:38px;
+    padding:8px 9px 8px 31px;
+    font-size:0.76rem;
+  }
+
+  .search input:focus{
+    width:100%;
+  }
+
+  .search svg{
+    left:10px;
+    width:14px;
+    height:14px;
+  }
+
+  /* Bouton téléphone */
+  .btn-call{
+    width:38px;
+    height:38px;
+
+    padding:0;
+
+    justify-content:center;
+
+    border-radius:50%;
+  }
+
+  .btn-call .call-text{
+    display:none;
+  }
+
+  .btn-call svg{
+    width:15px;
+    height:15px;
+  }
+
+  /* Hero */
+  .hero{
+    padding:28px 14px 24px;
+    gap:28px;
+  }
+
+  .hero h1{
+    font-size:2rem;
+  }
+
+  .hero p.lede{
+    font-size:0.9rem;
+  }
+
+  .hero-contacts{
+    gap:7px;
+  }
+
+  .contact-chip{
+    padding:8px 10px;
+    font-size:0.73rem;
+  }
+
+  /* Catégories */
+  .category{
+    padding:34px 12px 6px;
+  }
+
+  .cat-head{
+    gap:10px;
+    padding-bottom:14px;
+    margin-bottom:16px;
+  }
+
+  .cat-head h2{
+    font-size:1.25rem;
+  }
+
+  .cat-desc{
+    font-size:0.8rem;
+  }
+
+  /* Produits : 2 cartes par ligne */
+  .grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:10px;
+  }
+
+  .card{
+    border-radius:14px;
+  }
+
+  .card-media{
+    padding:8px;
+  }
+
+  .card-body{
+    padding:10px 10px 4px;
+  }
+
+  .card-body h3{
+    font-size:0.8rem;
+    line-height:1.25;
+  }
+
+  .card-price{
+    padding:6px 10px 11px;
+  }
+
+  .card-price span{
+    font-size:0.64rem;
+    padding:5px 8px;
+  }
+
+  /* Menu Produits */
+  .products-dropdown{
+    position:fixed;
+
+    top:56px;
+    left:10px;
+    right:10px;
+
+    width:auto;
+
+    max-height:65vh;
+    overflow-y:auto;
+
+    border-radius:12px;
+  }
+
+  .products-dropdown a{
+    font-size:0.82rem;
+    padding:10px;
+  }
+
+  /* Footer */
+  footer{
+    padding:40px 14px 24px;
+  }
+
+  .footer-inner{
+    gap:24px;
+  }
+
+  .contact-card{
+    padding:20px;
+  }
+
+  .contact-line{
+    font-size:0.8rem;
+  }
+
+  /* Boutons flottants */
+  .float-actions{
+    right:12px;
+    bottom:12px;
+    gap:8px;
+  }
+
+  .float-actions .float-cta{
+    padding:10px 12px;
+    font-size:0.74rem;
+  }
+
+  }
 </style>
 </head>
 <body>
