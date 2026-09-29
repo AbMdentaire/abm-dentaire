@@ -814,6 +814,131 @@
   }
 
   }
+
+  /* ---------- Fenêtre produit ---------- */
+
+.product-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(10, 28, 45, 0.65);
+  backdrop-filter:blur(4px);
+}
+
+.product-modal.open{
+  display:flex;
+}
+
+.product-modal-content{
+  position:relative;
+
+  width:100%;
+  max-width:480px;
+  max-height:90vh;
+  overflow-y:auto;
+
+  padding:24px;
+
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+  text-align:center;
+}
+
+.product-modal-content img{
+  display:block;
+
+  width:100%;
+  max-width:330px;
+  max-height:330px;
+
+  margin:10px auto 20px;
+
+  object-fit:contain;
+}
+
+.product-modal-content h2{
+  margin:0 0 10px;
+
+  color:var(--navy-900);
+  font-size:1.35rem;
+}
+
+.modal-price{
+  margin:0 0 20px;
+
+  color:var(--teal-600);
+  font-size:.82rem;
+  font-weight:600;
+}
+
+.product-modal-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+
+  width:36px;
+  height:36px;
+
+  border:0;
+  border-radius:50%;
+
+  background:#f3f6f8;
+  color:var(--navy-900);
+
+  font-size:1.5rem;
+  line-height:1;
+
+  cursor:pointer;
+}
+
+.modal-whatsapp{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 18px;
+
+  border-radius:100px;
+
+  background:var(--teal-600);
+  color:#fff;
+
+  font-size:.85rem;
+  font-weight:600;
+
+  text-decoration:none;
+}
+
+/* Téléphone */
+@media (max-width:600px){
+
+  .product-modal{
+    padding:12px;
+    align-items:flex-end;
+  }
+
+  .product-modal-content{
+    max-width:none;
+
+    padding:20px 16px 24px;
+
+    border-radius:20px 20px 12px 12px;
+  }
+
+  .product-modal-content img{
+    max-height:280px;
+  }
+
+}
 </style>
 </head>
 <body>
@@ -1904,6 +2029,36 @@ rel="noopener">
 
 </div>
 
+<!-- Fenêtre produit -->
+<div class="product-modal" id="productModal">
+
+  <div class="product-modal-content">
+
+    <button class="product-modal-close" id="productModalClose" type="button">
+      &times;
+    </button>
+
+    <img id="modalImage" src="" alt="">
+
+    <h2 id="modalName"></h2>
+
+    <p class="modal-price">Prix sur commande</p>
+
+    <a
+      class="modal-whatsapp"
+      id="modalWhatsapp"
+      href="#"
+      target="_blank"
+      rel="noopener">
+      Commander sur WhatsApp
+    </a>
+
+  </div>
+
+</div>
+
+
+
 <script>
   // ---------- Sections ----------
   const sections = Array.from(document.querySelectorAll('.category'));
@@ -1985,6 +2140,64 @@ rel="noopener">
       });
     }
   });
+
+  // ---------- Ouverture fiche produit ----------
+const productModal = document.getElementById('productModal');
+const productModalClose = document.getElementById('productModalClose');
+const modalImage = document.getElementById('modalImage');
+const modalName = document.getElementById('modalName');
+const modalWhatsapp = document.getElementById('modalWhatsapp');
+
+document.querySelectorAll('.card').forEach(card => {
+  card.style.cursor = 'pointer';
+
+  card.addEventListener('click', () => {
+    const name = card.querySelector('.card-body h3')?.textContent.trim() || 'Produit';
+    const image = card.querySelector('.card-media img');
+
+    modalName.textContent = name;
+
+    if (image) {
+      modalImage.src = image.src;
+      modalImage.alt = name;
+      modalImage.style.display = 'block';
+    } else {
+      modalImage.src = '';
+      modalImage.alt = '';
+      modalImage.style.display = 'none';
+    }
+
+    modalWhatsapp.href =
+      'https://wa.me/212607402858?text=' +
+      encodeURIComponent('Bonjour, je souhaite avoir des informations sur : ' + name);
+
+    productModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// Fermer avec la croix
+productModalClose.addEventListener('click', () => {
+  productModal.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+// Fermer en cliquant sur le fond
+productModal.addEventListener('click', (event) => {
+  if (event.target === productModal) {
+    productModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Fermer avec la touche Échap
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    productModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
 </script>
 </body>
 </html>
