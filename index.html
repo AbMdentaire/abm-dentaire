@@ -939,6 +939,14 @@
   }
 
 }
+
+/* Produit trouvé par la recherche */
+.card.search-highlight{
+  border:2px solid var(--teal-500);
+  box-shadow:0 0 0 4px rgba(30,156,143,0.12);
+  transition:border-color .2s, box-shadow .2s;
+  scroll-margin-top:100px;
+}
 </style>
 </head>
 <body>
@@ -1218,6 +1226,14 @@ rel="noopener">
 <div class="card-price"><span>Prix sur commande</span></div>
 </article>
 
+<article class="card" data-name="amalgame">
+<div class="card-media"><img alt="amalgame" height="440" loading="lazy" src="images/amalgame.png" width="440"/></div>
+<div class="card-body">
+<h3>Amalgame</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
+</article>
+
 <article class="card" data-name="cortisomol">
 <div class="card-media"><img alt="cortisomol" height="440" loading="lazy" src="images/cortisomol.png" width="440"/></div>
 <div class="card-body">
@@ -1445,6 +1461,14 @@ rel="noopener">
 <div class="card-price"><span>Prix sur commande</span></div>
 
 </article>
+<article class="card" data-name="Top Dam">
+<div class="card-media"><img alt="Top dam" height="440" loading="lazy" src="images/top-dam.png" width="440"/></div>
+<div class="card-body">
+<h3>Top Dam</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
+
+</article>
 <article class="card" data-name="adhésif BOND">
 <div class="card-media"><img alt="adhésif BOND" height="440" loading="lazy" src="images/adhesif-BOND.png" width="440"/></div>
 <div class="card-body">
@@ -1478,13 +1502,19 @@ rel="noopener">
 </div>
 <div class="card-price"><span>Prix sur commande</span></div>
 
-
+</article>
+<article class="card" data-name="Pate Dentaflux ">
+<div class="card-media"><img alt="pate Dentaflux" height="440" loading="lazy" src="images/dentaflux.png" width="440"/></div>
+<div class="card-body">
+<h3>Pate dentaflux</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
 
 </article>
-<article class="card" data-name="Pate D-line x">
-<div class="card-media"><img alt="pate dline X" height="440" loading="lazy" src="images/pate-dline.png" width="440"/></div>
+<article class="card" data-name="Pate D-line">
+<div class="card-media"><img alt="pate dline" height="440" loading="lazy" src="images/pate-dline.png" width="440"/></div>
 <div class="card-body">
-<h3>Pate d Line X</h3>
+<h3>Pate d Line</h3>
 </div>
 <div class="card-price"><span>Prix sur commande</span></div>
 </article>
@@ -1584,6 +1614,14 @@ rel="noopener">
 <div class="card-media"><img alt="luna" height="440" loading="lazy" src="images/luna.png" width="440"/></div>
 <div class="card-body">
 <h3>Luna</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
+
+</article>
+<article class="card" data-name="Top Dam">
+<div class="card-media"><img alt="Top dam" height="440" loading="lazy" src="images/top-dam.png" width="440"/></div>
+<div class="card-body">
+<h3>Top Dam</h3>
 </div>
 <div class="card-price"><span>Prix sur commande</span></div>
 
@@ -1753,13 +1791,22 @@ rel="noopener">
 <div class="card-price"><span>Prix sur commande</span></div>
 </article>
 
-
 <article class="card" data-name="plaque de goutière">
 <div class="card-media">
     <img alt="plaque de goutière" height="440" loading="lazy" src="images/goutieres.png" width="440"/>
   </div>
 <div class="card-body">
 <h3>Plaque de goutière</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
+
+</article>
+<article class="card" data-name="Lame chirorgical">
+<div class="card-media">
+    <img alt="Lame chirorgical" height="440" loading="lazy" src="images/lame.png" width="440"/>
+  </div>
+<div class="card-body">
+<h3>Lame chirorgical</h3>
 </div>
 <div class="card-price"><span>Prix sur commande</span></div>
 </article>
@@ -2062,6 +2109,17 @@ rel="noopener">
 <div class="card-price"><span>Prix sur commande</span></div>
 </article>
 
+
+<article class="card" data-name="Lame chirorgical">
+<div class="card-media">
+    <img alt="Lame chirorgical" height="440" loading="lazy" src="images/lame.png" width="440"/>
+  </div>
+<div class="card-body">
+<h3>Lame chirorgical</h3>
+</div>
+<div class="card-price"><span>Prix sur commande</span></div>
+</article>
+
 <article class="card" data-name="tube molaire">
 <div class="card-media"><img alt="tube molaire " height="440" loading="lazy" src="images/tube-molaire.png" width="440"/></div>
 <div class="card-body">
@@ -2337,42 +2395,55 @@ rel="noopener">
   }
 
 
-  // ---------- Search filter ----------
-  const searchInput = document.getElementById('searchInput');
+// ---------- Search filter ----------
+// ---------- Recherche directe des produits ----------
+const searchInput = document.getElementById('searchInput');
+const productCards = Array.from(document.querySelectorAll('.card'));
 
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
+let searchTimer;
+let highlightedCard = null;
 
-    // Attendre au moins 2 caractères
-    if (q.length < 2) return;
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchTimer);
 
-    let matchingSection = null;
+  const query = searchInput.value
+    .trim()
+    .toLowerCase();
 
-    sections.some(section => {
+  if (query.length < 2) return;
 
-      const cards = Array.from(section.querySelectorAll('.card'));
+  searchTimer = setTimeout(() => {
 
-      const productFound = cards.some(card => {
-        const name = (card.dataset.name || '').toLowerCase();
-        return name.includes(q);
-      });
+    const matchingCard = productCards.find(card => {
+      const name = (
+        card.dataset.name ||
+        card.querySelector('.card-body h3')?.textContent ||
+        ''
+      ).toLowerCase();
 
-      if (productFound) {
-        matchingSection = section;
-        return true;
-      }
-
-      return false;
+      return name.includes(query);
     });
 
-    // Aller vers la catégorie correspondante
-    if (matchingSection) {
-      matchingSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    if (!matchingCard) return;
+
+    // Retirer l'ancien surlignage
+    if (highlightedCard) {
+      highlightedCard.classList.remove('search-highlight');
     }
-  });
+
+    // Aller directement au produit
+    matchingCard.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest'
+    });
+
+    // Mettre le produit en évidence
+    matchingCard.classList.add('search-highlight');
+    highlightedCard = matchingCard;
+
+  }, 350);
+});
 
   // ---------- Ouverture fiche produit ----------
 const productModal = document.getElementById('productModal');
