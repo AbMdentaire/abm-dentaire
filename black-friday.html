@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#141414">
+<title>Black Friday | AbM Dentaire</title>
+<style>
+:root{--black:#151515;--gold:#e9be53;--cream:#fffaf0;--ink:#202020;--muted:#656565}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f6f6f5;color:var(--ink)}a{text-decoration:none}.top{background:#fff;border-bottom:1px solid #e8e8e8}.top-inner{max-width:1180px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-weight:800;color:#123b4c;font-size:1.15rem}.back{color:#123b4c;font-size:.88rem;font-weight:700}.hero{background:radial-gradient(circle at 85% 15%,#4a3c1d 0%,#1b1b1b 42%,#101010 100%);color:white;text-align:center;padding:72px 20px 64px}.eyebrow{color:var(--gold);font-weight:800;letter-spacing:.16em;font-size:.77rem}.hero h1{font-size:clamp(2.8rem,9vw,6rem);letter-spacing:-.055em;margin:14px 0 6px;line-height:1}.hero h1 span{color:var(--gold)}.hero p{max-width:620px;margin:20px auto;color:#e6e1d5;line-height:1.6}.hero .cta{display:inline-block;margin-top:10px;padding:14px 24px;background:var(--gold);color:#171717;font-weight:800;border-radius:999px}.hero-note{display:block;margin-top:19px;color:#cfc7b6;font-size:.78rem}.wrap{max-width:1180px;margin:auto;padding:45px 20px 80px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:24px;flex-wrap:wrap}.section-head h2{margin:0;font-size:clamp(1.5rem,4vw,2rem)}.section-head p{margin:7px 0 0;color:var(--muted);font-size:.9rem}.search{width:min(100%,310px);border:1px solid #d9d9d9;border-radius:12px;padding:13px 15px;font:inherit;background:white}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card{display:flex;flex-direction:column;background:white;border:1px solid #e8e8e8;border-radius:17px;overflow:hidden;box-shadow:0 7px 24px rgba(0,0,0,.035)}.media{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1.2;background:#fafafa;padding:18px}.media img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain}.missing{color:#8a8a8a;font-size:.83rem;text-align:center}.promo-tag{position:absolute;left:12px;top:12px;background:#181818;color:var(--gold);border-radius:7px;padding:6px 8px;font-size:.66rem;font-weight:800;letter-spacing:.03em}.body{display:flex;flex-direction:column;flex:1;padding:17px}.body h3{font-size:1rem;line-height:1.35;margin:0 0 12px;min-height:2.7em}.price{font-size:1.55rem;font-weight:850;color:#171717;letter-spacing:-.04em}.old-price{color:#777;font-size:.92rem;text-decoration:line-through;text-decoration-thickness:1.5px;margin:0 0 4px;font-weight:600}
+.per{font-size:.77rem;color:#777;font-weight:500;letter-spacing:0}.minimum{display:inline-block;align-self:flex-start;margin-top:11px;background:#fff4d8;color:#725008;border:1px solid #f4d99b;border-radius:7px;padding:7px 9px;font-size:.76rem;font-weight:750}.minimum.single{background:#f4f5f5;border-color:#e9e9e9;color:#666}.total{font-size:.78rem;color:#666;margin:9px 0 0}.order{display:block;text-align:center;margin-top:auto;padding:13px 8px;background:#167b69;color:white;border-radius:10px;font-weight:750;font-size:.84rem}.order-wrap{padding-top:18px}.empty{display:none;padding:30px 0;color:#777;text-align:center}.footer{background:#151515;color:#e8e8e8;text-align:center;padding:30px 20px;font-size:.85rem;line-height:1.8}.footer strong{color:var(--gold)}@media(max-width:920px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:650px){.hero{padding:55px 17px 48px}.wrap{padding:30px 12px 55px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{border-radius:12px}.media{padding:9px}.body{padding:11px}.body h3{font-size:.84rem;min-height:2.65em}.price{font-size:1.22rem}.per{font-size:.7rem}.minimum{font-size:.66rem;padding:6px}.total{font-size:.69rem}.order{font-size:.72rem;padding:11px 6px}.promo-tag{top:7px;left:7px;font-size:.56rem;padding:5px}.top-inner{padding:12px}.brand{font-size:1rem}.back{font-size:.76rem}.search{width:100%}}@media(max-width:350px){.grid{grid-template-columns:1fr}.media{aspect-ratio:1.7}}
+/* Alignement uniforme des cartes, y compris sur mobile */
+.card{height:100%}
+.body{
+  display:grid;
+  grid-template-rows:3.1em 1.5em 2.4em 5.7em auto;
+  align-content:stretch;
+  flex:1;
+}
+.body h3{margin:0;min-height:0;line-height:1.35;overflow-wrap:anywhere}
+.old-price{margin:0;align-self:end}
+.price{align-self:center;white-space:nowrap}
+.promo-details{align-self:start;min-height:0}
+.promo-details .minimum{margin-top:10px}
+.promo-details .total{margin-top:8px}
+.order-wrap{align-self:end;padding-top:0;width:100%}
+.order{margin:0}
+@media(max-width:650px){
+  .body{grid-template-rows:4.2em 1.5em 2.3em 6.7em auto}
+  .price{white-space:normal}
+  .order{min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><a class="brand" href="index.html">AbM Dentaire</a><a class="back" href="index.html">← Retour au catalogue</a></div></header>
+<section class="hero"><div class="eyebrow">OFFRES SPÉCIALES • ABM DENTAIRE</div><h1>BLACK <span>FRIDAY</span></h1><p>Une sélection de fournitures et produits dentaires à prix promotionnels. Profitez des offres en respectant les quantités minimales indiquées.</p><a class="cta" href="#offres">Découvrir offres ↓</a><small class="hero-note">Prix en dirhams marocains (DH), par unité • Sous réserve de disponibilité</small></section>
+<main class="wrap" id="offres"><div class="section-head"><div><h2>Nos offres Black Friday</h2><p>Le prix affiché est toujours le prix d'une unité. Les quantités minimales sont indiquées uniquement lorsque nécessaires.</p></div><input id="search" class="search" type="search" placeholder="Rechercher une promotion…" aria-label="Rechercher une promotion"></div><div class="grid" id="grid"></div><p class="empty" id="empty">Aucun produit ne correspond à cette recherche.</p></main>
+<footer class="footer"><strong>AbM Dentaire</strong><div>Kénitra, Alliance Darna • Tél. +212 778-075287</div><div>WhatsApp : +212 607-402858 • Instagram : @abmdentaire</div><div>Offres selon disponibilité. Quantités minimales obligatoires pour bénéficier du tarif indiqué.</div></footer>
+<script>
+// Images reprises des références du catalogue fournies. Les variantes non identifiées restent sans image.
+const products=[
+{name:'Alginate BMS',price:60,min:3,img:'alginate-BMS.jpeg',oldPrice:65},
+{name:'Formacresol',price:200,min:1,img:'formacresol.jpeg',oldPrice:220},
+{name:'Pulpodent',price:500,min:1,img:'pulpodent.jpeg',oldPrice:530},
+{name:'Whiteness HP',price:700,min:1,img:'whiteness-hp.jpeg',oldPrice:750},
+{name:'Cortisomol',price:410,min:1,img:'cortisomol.jpeg',oldPrice:440},
+{name:'Ketac cem : 3M',price:1550,min:1,img:'ketac-cem-3m.jpeg',oldPrice:1600},
+{name:'Gutta Percha Points',price:50,min:2,img:'gutta-20.jpeg',oldPrice:55},
+{name:'Megafill MH coffret',price:1100,min:1,img:'megafill-coffret.jpeg',oldPrice:1150},
+{name:'LLIS',price:500,min:1,img:'lis-coffret.jpeg',oldPrice:550},
+{name:'Compomax',price:360,min:1,img:'compomax-coffret.jpeg',oldPrice:400},
+{name:'Luna',price:240,min:1,img:'luna.jpeg',oldPrice:250},
+{name:'Etching',price:140,min:2,img:'etching.jpeg',oldPrice:150},
+{name:'Composite fluide I-Flow',price:200,min:1,img:'i-fflow.jpeg',oldPrice:220},
+{name:'Brackets',price:20,min:10,img:'bracket-crochet.jpeg',oldPrice:25},
+{name:'Bracket Eksen',price:140,min:1,img:'bracket-eksen.jpeg',oldPrice:150},
+{name:'Bracket Roth/MBT',price:40,min:3,img:'bracket-blue.jpeg',oldPrice:45},
+{name:'Fil Acier Creative',price:20,min:3,img:'fil-creative.jpeg',oldPrice:25},
+{name:'Résine à chaud Faprodent',price:120,min:2,img:'resine-chaud-faprodent.png',oldPrice:130},
+{name:'Résine à chaud',price:110,min:2,img:'resine-chaud.png',oldPrice:120},
+{name:'Résine à froid',price:130,min:1,img:'resine-froid.jpeg',oldPrice:140},
+{name:'Résine TCS',price:1370,min:1,img:'resine-tcs.jpeg',oldPrice:1420},
+{name:'Cartouches de résine',price:12,min:20,img:'cartouche-resine.jpeg',oldPrice:15},
+{name:'Cire Alphawax',price:65,min:1,img:'cire-alphawax.png',oldPrice:70},
+{name:'Star Gel 2KG',price:200,min:1,img:'star-gel.jpeg',oldPrice:220},
+{name:'Ivomax',price:60,min:3,img:'ivomax.jpeg',oldPrice:70},
+{name:'Masques',price:40,min:2,img:'masque.jpeg',oldPrice:50},
+{name:'Coton salivaire',price:45,min:2,img:'coton-salivaire.jpeg',oldPrice:50},
+{name:'Coton Naja',price:20,min:3,img:'coton-naja.jpeg',oldPrice:25},
+{name:'Fraises diamantées bur',price:12,min:10,img:'fraises-diamante-bure.jpeg',oldPrice:15},
+{name:'Fraises diamantées boule',price:13,min:10,img:'fraises-diamante-boule.jpeg',oldPrice:18},
+{name:'Fraises carbure',price:50,min:2,img:'fraise-carbure.jpeg',oldPrice:55},
+{name:'Aiguille Spident',price:60,min:2,img:'spident.jpeg',oldPrice:65}
+];
+const grid=document.getElementById('grid');
+const format=n=>new Intl.NumberFormat('fr-FR').format(n);
+function render(q=''){
+ grid.replaceChildren();
+ const matches=products.filter(p=>p.name.toLocaleLowerCase('fr').includes(q.toLocaleLowerCase('fr').trim()));
+ document.getElementById('empty').style.display=matches.length?'none':'block';
+ matches.forEach(p=>{
+  const card=document.createElement('article');card.className='card';
+  const media=document.createElement('div');media.className='media';
+  const tag=document.createElement('span');tag.className='promo-tag';tag.textContent='BLACK FRIDAY';media.append(tag);
+  if(p.img){const img=document.createElement('img');img.src='images-2/'+p.img;img.alt=p.name;img.loading='lazy';img.onerror=()=>{img.remove();const no=document.createElement('span');no.className='missing';no.textContent='Photo à venir';media.append(no)};media.append(img)}
+  else{const no=document.createElement('span');no.className='missing';no.textContent='Photo à venir';media.append(no)}
+  const body=document.createElement('div');body.className='body';
+  const h=document.createElement('h3');h.textContent=p.name;
+  const price=document.createElement('div');price.className='price';price.textContent=format(p.price)+' DH ';
+  const per=document.createElement('span');per.className='per';per.textContent='/ unité';price.append(per);
+  body.append(h);
+  if(p.oldPrice != null){const old=document.createElement('div');old.className='old-price';old.textContent=' '+format(p.oldPrice)+' DH';body.append(old)}
+  body.append(price);
+   const details=document.createElement('div');details.className='promo-details';
+   if(p.min>1){const min=document.createElement('div');min.className='minimum';min.textContent='Minimum '+p.min+' unités';details.append(min)}
+   if(p.min>1){const total=document.createElement('p');total.className='total';total.textContent='Total minimum : '+format(p.min*p.price)+' DH';details.append(total)}
+   body.append(details);
+  const wrap=document.createElement('div');wrap.className='order-wrap';
+  const a=document.createElement('a');a.className='order';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Commander sur WhatsApp';
+  const msg=`Bonjour AbM Dentaire, je souhaite profiter de l'offre Black Friday pour ${p.name} (${format(p.price)} DH par unité, quantité minimale : ${p.min}). Merci de me confirmer la disponibilité.`;
+  a.href='https://wa.me/212607402858?text='+encodeURIComponent(msg);wrap.append(a);body.append(wrap);
+  card.append(media,body);grid.append(card);
+ });
+}
+document.getElementById('search').addEventListener('input',e=>render(e.target.value));render();
+</script>
+</body></html>
